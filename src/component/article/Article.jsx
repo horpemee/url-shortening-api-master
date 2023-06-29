@@ -36,7 +36,7 @@ const Article = () => {
     ] 
 
   return (
-    <div className='bg-slate-200 px-32 py-40 flex flex-col text-center '>
+    <div className='bg-slate-200 px-32 pt-52 flex flex-col text-center '>
         <h1 className='text-black text-4xl font-extrabold '>Advanced Statistics</h1>
         <p className='mt-4 text-grayish-violet text-lg  font-medium'>Track how your links are performing across the web with <br/> our advanced statistics dashboard</p>
 
