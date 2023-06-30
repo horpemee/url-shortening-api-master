@@ -1,7 +1,7 @@
 import "./index.css";
 import Header from "./component/header/header";
 import Hero from "./component/hero/hero";
-import Article from "./component/article/Article";
+// import Article from "./component/article/Article";
 import Section from "./component/section/Section";
 import Footer from "./component/Footer/footer";
 import LinkApi from "./component/linkApi/LinkApi";
@@ -13,7 +13,7 @@ function App() {
       <Hero/>
       <LinkApi/>
 
-      <Article/>
+      {/* <Article/> */}
       <Section/>
       <Footer/>
 
