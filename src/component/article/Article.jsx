@@ -1,8 +1,7 @@
  
 import React from "react";
 import { useState } from "react";
-// import {shortenlink} from "../linkApi/LinkApi";
-// import LinkApi from "../linkApi/LinkApi";
+ 
 
 const Article = ({
   links,
@@ -12,41 +11,51 @@ const Article = ({
   displayLink,
   setDisplayLink,
 }) => {
-  const [buttonText, setButtonText] = useState("Copy!");
+  const [buttonText, setButtonText] = useState(null);
 
-  const handleCopy = (links) => {
-    navigator.clipboard.writeText(links.shortLink);
-    setButtonText("Copied!");
+  const handleCopy = (shortLink, index) => {
+    navigator.clipboard.writeText(shortLink);
+  setButtonText(index);
+
   };
 
+  
+
   return (
-    <div className="mt-24 "  >
+    <div className=" mt-36  lg:mt-10 xl:mt-20"  >
       {displayLink && (
         <div  >
-          <ul >
             {links.map((link, index) => (
+            <ul className="" key={index} >
+
               <li
                 key={index}
-                className=" overflow-hidden rounded-lg  px-4 py-3 mb-2 bg-white flex flex-row justify-between items-center  "
+                className=" overflow-hidden   rounded-lg py-2   mb-2 bg-white  flex flex-col  items-left text-start  lg:items-center lg:flex-row  lg:px-4 lg:py-3 lg:justify-between"
               >
-                <div class=" font-medium  ">{link.originalLink}</div>
-                <div class="basis-2/9 text-cyan font-medium mr-2  ">
+
+                <div key={index} class=" px-4 py-3 border-b-2 border-gray text-normal font-medium lg:border-none">{link.originalLink}</div>
+                <div key={index} class=" px-4 py-3 basis-2/9 text-cyan font-medium mr-2  ">
                   {link.shortLink}
                 </div>
-                <button
-                  class="basis-1/9 rounded-lg px-6 py-2  font-medium bg-cyan text-white hover:bg-teal-200 focus:bg-slate-800"
-                  onClick={handleCopy}
+                <button key={index}
+                  class="basis-1/9 rounded-lg px-6 py-2 mx-4  font-medium bg-cyan text-white hover:bg-teal-200 focus:bg-slate-800"
+                  onClick={ () => {
+                    handleCopy(link.shortLink, index);
+                  }} 
                 >
-                  {buttonText}
+                  {buttonText === index ? "Copied!" : "Copy"}
                 </button>
               </li>
-            ))}
           </ul>
+
+            ))}
         </div>
       )}
+
     
     </div>
-    // shortenlink();
   );
+
+  
 };
 export default Article;
